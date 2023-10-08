@@ -6,14 +6,14 @@
 
 | Column             | Type   | Options                  |
 | ------------------ | ------ | ------------------------ | 
-| nickname           | string | null: false, unique: true|
+| nickname           | string | null: false              |
 | email              | string | null: false, unique: true|
-| encrypted_password | string | null: false, unique: true|
+| encrypted_password | string | null: false              |
 | last_name          | string | null: false              |
 | first_name         | string | null: false              |
 | last_name_kana     | string | null: false              |
 | first_name_kana    | string | null: false              | 
-| birthday           | string | null: false              |
+| birthday           | date   | null: false              |
 
 
 ## itemsテーブル
@@ -31,26 +31,33 @@
 | price              | integer| null:false                        |
 
 
+## addresses テーブル
+
+| Column           | Type       | Options                          |
+| ---------------- | ---------- | -----------------------------    | 
+| oder             | references | null: false, foreign_key: true   |
+| post_code        | string     | null: false                      |
+| prefecture_id    | integer    | null: false                      |
+| city_name        | string     | null: false                      |
+| block_name       | string     | null: false                      |
+| building_name    | string     |                                  |
+| phone_number     | string     | null: false                      |
+
+
 ## ordersテーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------       | 
-| user             | references | null: false, foreign_key: true||
-| item             | references | null: false, unique: true      |
+| Column           | Type       | Options                          |
+| ---------------- | ---------- | -----------------------------    | 
+| user             | references | null: false, foreign_key: true   |
+| item             | references | null: false, reference_key: true |
 
 
 ## payments
 
-| Column             | Type   | Options                       |
-| ------------------ | ------ | ------------------------      | 
-| oders           | references | null: false, foregn_key: true|
-| email              | string | null: false, unique: true      |
-| encrypted_password | string | null: false, unique: true|
-| last_name          | string | null: false              |
-| first_name         | string | null: false              |
-| last_name_kana     | string | null: false              |
-| first_name_kana    | string | null: false              | 
-| birthday           | string | null: false              |
+| Column          | Type       | Options                        |
+| ----------------| ---------- | ---------------------------    | 
+| oders           | references | null: false, foreign_key: true|
+
 
 ## commentsテーブル
 
